@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-[ -n "$RBENV_DEBUG" ] && set -x
+[ -n "$PLENV_DEBUG" ] && set -x
 
 bare=0
 force=0
@@ -22,11 +22,11 @@ done
 
 [ "$force" == "1" ] || set -e
 
-eval "$(rbenv init -)"
+eval "$(plenv init -)"
 
-for v in $(rbenv versions --bare); do
+for v in $(plenv versions --bare); do
     [ "$bare" == "1" ] || echo "$v>> $*" 1>&2
-    rbenv shell $v
+    plenv shell $v
     $*
     echo
 done

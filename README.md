@@ -1,62 +1,69 @@
-Provides `rbenv all` so that you can run the same code under all of the ruby versions you have installed.
+Provides `plenv all` so that you can run the same code under all of the perl versions you have installed.
 
 Installation
 ============
 
-Just git clone this repository into a new subdirectory of your rbenv plugins directory:
+Just git clone this repository into a new subdirectory of your plenv plugins directory:
 
 ```
-git clone https://github.com/ConradIrwin/rbenv-all ~/.rbenv/plugins/rbenv-all
-````
+git clone https://github.com/claco/plenv-all ~/.plenv/plugins/plenv-all
+```
 
 Usage
 =====
 
-Just `rbenv all <code you want to run>`. For example to run rspec against all ruby versions that you have installed, use:
+Just `plenv all <code you want to run>`. For example to run cpanm against all perl versions that you have installed, use:
 
 ```
-$ rbenv all rspec
+$ plenv all cpanm App::Ack
 ```
 
-By default rbenv all will output a little notification explaining what it is doing for each ruby:
+By default plenv all will output a little notification explaining what it is doing for each perl:
 
 ```
-$ rbenv all ruby --version
-1.8.7-p371>> ruby --version
-ruby 1.8.7 (2012-10-12 patchlevel 371) [i686-darwin12.1.0]
+$ plenv all perl --version
+5.20.3>> perl --version
 
-1.9.3-p392>> ruby --version
-ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.1.0]
+This is perl 5, version 20, subversion 3 (v5.20.3) built for darwin-2level
+...
+
+5.22.1>> perl --version
+
+This is perl 5, version 22, subversion 1 (v5.22.1) built for darwin-2level
+...
 ```
 
 To suppress this, pass --bare
 
 ```
-$ rbenv all --bare ruby --version
-ruby 1.8.7 (2012-10-12 patchlevel 371) [i686-darwin12.1.0]
+$ plenv all --bare perl --version
+This is perl 5, version 20, subversion 3 (v5.20.3) built for darwin-2level
+...
 
-ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.1.0]
+This is perl 5, version 22, subversion 1 (v5.22.1) built for darwin-2level
+...
 ```
 
-By default rbenv all will stop on the first failure.
+By default plenv all will stop on the first failure.
 
 ```
-$ rbenv all ruby --vresion
-1.8.7-p371>> ruby --vresion
-ruby: invalid option --vresion  (-h will show valid options)
+$ plenv all perl --vresion
+5.20.3>> perl --vresion
+Unrecognized switch: --vresion  (-h will show valid options).
 ```
 
 To suppress this, pass --force
 
 ```
-$ rbenv all --force ruby --vresion
-1.8.7-p371>> ruby --vresion
-ruby: invalid option --vresion  (-h will show valid options)
+$ plenv all --force perl --vresion
+5.20.3>> perl --vresion
+Unrecognized switch: --vresion  (-h will show valid options).
 
-1.9.3-p392>> ruby --vresion
-ruby: invalid option --vresion  (-h will show valid options)
+5.22.1>> perl --vresion
+Unrecognized switch: --vresion  (-h will show valid options).
 ```
+
 Credit
 ======
 
-This was written by [Sheldon Hearn](https://github.com/sheldonh) in a [pull request](https://github.com/sstephenson/rbenv/pull/110) to rbenv. I just packaged it.
+This is a fork from the rbenv version of the all command by [Conrad Irwin](https://github.com/ConradIrwin/rbenv-all)
